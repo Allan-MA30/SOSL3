@@ -4,7 +4,7 @@
       <img src="../Assets/GV.jpg" alt="Tembera U Rwanda logo" class="h-10 w-10 rounded-full object-cover border border-white/30" />
       <span class="text-white font-bold uppercase tracking-[0.2em] text-sm">TEMBERA uRWANDA</span>
     </div>
-    <ul class="flex gap-8 text-sm font-medium justify-end">
+    <ul class="flex gap-8 text-sm font-medium justify-end items-center">
       <li><RouterLink to="/" class="hover:text-yellow-300">Home</RouterLink></li>
       <li><RouterLink to="/about" class="hover:text-yellow-300">About Us</RouterLink></li>
       <li><RouterLink to="/service" class="hover:text-yellow-300">Services</RouterLink></li>
@@ -12,7 +12,7 @@
       <li class="relative inline-flex">
         <button
           type="button"
-          class="hover:text-yellow-300 inline-flex items-center gap-1"
+          class="hover:text-yellow-300 inline-flex items-center gap-1 h-10"
           @mouseenter="activeDropdown = 'gallery'"
           @mouseleave="closeDropdown"
         >
@@ -34,7 +34,7 @@
       <li class="relative inline-flex">
         <button
           type="button"
-          class="hover:text-yellow-300 inline-flex items-center gap-1"
+          class="hover:text-yellow-300 inline-flex items-center gap-1 h-10"
           @mouseenter="activeDropdown = 'destinations'"
           @mouseleave="closeDropdown"
         >
@@ -56,13 +56,19 @@
         </ul>
       </li>
       <li><RouterLink to="/contact" class="hover:text-yellow-300">Contact Us</RouterLink></li>
-      <li>
+      <li class="relative inline-flex" @mouseleave="langOpen = false">
         <button
-          @click="toggleLanguage"
-          class="bg-white text-green-800 rounded-full px-3 py-2 text-xs font-semibold uppercase tracking-[0.15em] hover:bg-green-100 transition"
+          type="button"
+          class="bg-white text-green-800 rounded-full px-3 py-2 text-xs font-semibold uppercase tracking-[0.15em] hover:bg-green-100 transition flex items-center gap-2"
+          @click="langOpen = !langOpen"
         >
-          {{ locale === 'en' ? 'Kinyarwanda' : 'English' }}
+          <span>{{ locale === 'en' ? 'English' : 'Kinyarwanda' }}</span>
+          <span class="text-xs">▾</span>
         </button>
+        <ul v-if="langOpen" class="absolute right-0 mt-2 w-40 bg-white rounded shadow z-50 text-green-900 overflow-hidden">
+          <li class="px-4 py-2 hover:bg-green-100 cursor-pointer" @click="selectLang('en')">English</li>
+          <li class="px-4 py-2 hover:bg-green-100 cursor-pointer" @click="selectLang('ki')">Kinyarwanda</li>
+        </ul>
       </li>
     </ul>
   </nav>
@@ -71,10 +77,16 @@
 <script setup>
 import { RouterLink } from 'vue-router';
 import { ref } from 'vue';
-import { locale, toggleLanguage } from '../translation.js';
+import { locale, setLocale } from '../translation.js';
 
 const activeDropdown = ref(null);
 const closeDropdown = () => {
   activeDropdown.value = null;
 };
+
+const langOpen = ref(false);
+const selectLang = (l) => {
+  setLocale(l)
+  langOpen.value = false
+}
 </script>

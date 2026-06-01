@@ -11,10 +11,13 @@ if (typeof window !== 'undefined') {
 
 const enToKi = {
   'Home': 'Ahabanza',
+  'Contact us':'Duhamagare',
   'About Us': 'Ibyerekeye',
   'Services': 'Serivisi',
   'Contact Us': 'Vugana Natwe',
-  'Gallery': 'Ikaragiro',
+    'Contact': 'Vugana',
+    'Us': 'Natwe',
+  'Gallery': 'Amafoto',
   'Destinations': 'Aho ujya',
   'Northern Province': 'Amajyaruguru',
   'Southern Province': 'Amajepfo',
@@ -321,6 +324,18 @@ const enToKi = {
   "Contact Us": 'Vugana Natwe',
   'Have a question about your trip? Ready to start planning? Our team is here to help you every step of the way.': 'Ufite ikibazo ku rugendo rwawe? Witeguye gutangira gutegura? Itsinda ryacu riri hano kugira ngo rigufashe buri kiganza cy\'inzira.',
   "We'd Love to Hear From You": 'Turashaka kumva ijwi ryawe',
+  'Common Questions': 'Ibibazo Bikunze Kubazwa',
+  'Frequently Asked Questions': 'Ibibazo Bikunze Kubazwa',
+  'Do I need a visa to visit Rwanda?': 'Ese nkeneye viza kugira ngo nsure u Rwanda?',
+  'Citizens of most African countries can enter Rwanda visa-free. Visitors from other countries can obtain a visa on arrival or apply online via the Rwanda e-visa portal. We recommend applying online before travel.': 'Abaturage b\'ibihugu byinshi bya Afurika bashobora kwinjira mu Rwanda nta viza. Abashyitsi baturutse mu bindi bihugu bashobora kubona viza igihe baje cyangwa bayisaba kuri internet ku rubuga rwa e-visa rwa Rwanda. Turasaba gusaba mbere yo gutega urugendo.',
+  'When is the best time to visit Rwanda?': 'Ni ryari igihe cyiza cyo gusura u Rwanda?',
+  'Rwanda can be visited year-round, but the best time for gorilla trekking is during the dry seasons: June–September and December–February. The rainy seasons bring lush green landscapes and fewer crowds.': 'U Rwanda rurashobora gusurwa umwaka wose, ariko igihe cyiza cyo gusura gorila ni mu bihembwe byumye: Kamena–Nzeri na Ukuboza–Gashyantare. Ibihembwe by\'imvura bituma igihugu kiba icyatsi kandi kigira abantu bake.',
+  'How do I book a gorilla trekking permit?': 'Nigute nabona uruhushya rwo gusura gorila?',
+  'Gorilla permits must be obtained through the Rwanda Development Board (RDB). We handle permit bookings for all our clients as part of our trekking packages — just contact us and we take care of everything.': 'Permis zo gusura gorila ziboneka biciye kuri Rwanda Development Board (RDB). Twebwe dutegura izo permis ku bakiriya bacu nka kimwe mu byubakirwa ku mapaki yo gusura gorila — vugana natwe kandi tuzabyitaho byose.',
+  'What is included in your tour packages?': 'Ibyo amapaki yanyu akubiyemo ni ibihe?',
+  'Our packages typically include accommodation, meals, park fees, permits, private 4WD transport, and expert guide services. Each package is customizable — reach out to discuss exactly what you need.': 'Amapaki yacu akunze kubamo uburaro, ibiryo, amafaranga ya parike, permis, ubwikorezi bwa 4WD bwigenga, n\'abafasha b\'inararibonye. Buri gipaki gishobora guhindurwa — twandikire tuganire ku byo ukeneye.',
+  'Is Rwanda safe for tourists?': 'Ese u Rwanda rufite umutekano ku basura?',
+  "Rwanda is consistently ranked one of Africa's safest countries for travelers. Kigali is particularly noted for its cleanliness, low crime rates, and friendly locals. We recommend standard travel precautions as you would anywhere.": 'U Rwanda kenshi rurashimangirwa nk\'igihugu kimwe mu bifite umutekano muri Afurika ku bashyitsi. Kigali izwi cyane kubera isuku, urugero ruto rw\'ibyaha, n\'abatuye baterwa ubwuzu. Turasaba gukurikiza ingamba zisanzwe zo gutegura urugendo nk\'ahandi hose.',
   'Book Your Trip': 'Tegura Urugendo rwawe',
   'Reach Us': 'Tubone',
   'Plan Your Rwanda Journey': 'Tegura Urugendo rwawe mu Rwanda',
@@ -480,3 +495,18 @@ function toggleLanguage(root = document.body) {
 }
 
 export { locale, toggleLanguage, translateDOM }
+
+function setLocale(lang) {
+  if (lang !== 'en' && lang !== 'ki') return
+  locale.value = lang
+  if (typeof window !== 'undefined') localStorage.setItem('locale', lang)
+  translateDOM(document.body, locale.value)
+}
+
+// Apply saved locale translation on initial load if present
+if (typeof window !== 'undefined') {
+  const saved = localStorage.getItem('locale')
+  if (saved) setTimeout(() => translateDOM(document.body, saved), 0)
+}
+
+export { setLocale }

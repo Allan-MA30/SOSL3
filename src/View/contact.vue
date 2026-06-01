@@ -213,7 +213,7 @@
           >
             <button
               class="w-full text-left px-6 py-5 flex justify-between items-center hover:bg-gray-50 transition-colors duration-200"
-              @click="toggleFaq(i)"
+              @click="toggleFaqTranslated(i)"
             >
               <span class="font-semibold text-gray-900 text-sm md:text-base">{{ faq.q }}</span>
               <svg
@@ -256,7 +256,8 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, nextTick } from 'vue'
+import { locale, translateDOM } from '../translation.js'
 
 const submitted = ref(false)
 const openFaq = ref(null)
@@ -346,5 +347,13 @@ function handleSubmit() {
 
 function toggleFaq(i) {
   openFaq.value = openFaq.value === i ? null : i
+}
+
+// ensure newly rendered dynamic content is translated when locale is active
+function toggleFaqTranslated(i) {
+  toggleFaq(i)
+  nextTick(() => {
+    if (locale.value === 'ki') translateDOM(document.body, 'ki')
+  })
 }
 </script>

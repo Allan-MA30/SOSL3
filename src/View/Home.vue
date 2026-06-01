@@ -23,7 +23,7 @@
         </p>
         <p class="text-lg md:text-xl text-white/75 leading-relaxed mb-12 max-w-2xl mx-auto font-light">
           Breathtaking landscapes, incredible wildlife, vibrant culture, and
-          unforgettable adventures — all in one extraordinary destination.
+          unforgettable adventures all in one extraordinary destination.
         </p>
         <div class="flex justify-center gap-4 flex-wrap">
           <RouterLink
