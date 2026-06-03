@@ -12,6 +12,7 @@ import Photos from "@/View/Photos.vue";
 import Videos from "@/View/Videos.vue";
 import Login from "@/View/Login.vue";
 import Register from "@/View/Register.vue";
+import Dashboard from "@/View/Dashboard/Dashboard.vue";
 
 const routes = [
   {
@@ -65,26 +66,27 @@ const routes = [
     component: Western,
   },
   {
-path:"/Login",
-name:"Login",
-component:Login,
-
-
+    path: "/login",
+    name: "Login",
+    component: Login,
   },
   {
-path:"/Register",
-name:"Register",
-component:Register,
-
-
+    path: "/register",
+    name: "Register",
+    component: Register,
   },
   {
     path: "/kigali",
     name: "Kigali",
     component: Kigali,
   },
-  
+  {
+    path: "/dashboard",
+    name: "Dashboard",
+    component: Dashboard,
+  }
 ];
+
 
 const router = createRouter({
   history: createWebHistory(),

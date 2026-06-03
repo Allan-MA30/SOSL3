@@ -36,7 +36,7 @@
    <p class="text-center text-sm mt-4 text-gray-500">
     Already have an account?
 
-   <li> <RouterLink to="/Login" class="text-green-700 font-semibold hover:underline">Login</RouterLink></li>
+   <li> <RouterLink to="/login" class="text-green-700 font-semibold hover:underline">Login</RouterLink></li>
 </p>
 </div>
 </div>

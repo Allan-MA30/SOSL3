@@ -56,7 +56,7 @@
         </ul>
       </li>
       <li><RouterLink to="/contact" class="hover:text-yellow-300">Contact Us</RouterLink></li>
-      <li><RouterLink to="/Login" class="bg-yellow-400 text-green-900 px-4 py-1 rounded font-semibold hover:bg-yellow-300">Login</RouterLink></li>
+      <li><RouterLink to="/login" class="bg-yellow-400 text-green-900 px-4 py-1 rounded font-semibold hover:bg-yellow-300">Login</RouterLink></li>
       
       <li class="relative inline-flex" @mouseleave="langOpen = false">
         <button
